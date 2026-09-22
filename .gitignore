@@ -2,5 +2,8 @@
 __pycache__/
 *.pyc
 speed_*.json
+# the two runs the README and chart actually cite are published evidence
+!speed_published.json
+!speed_nospec.json
 gsm8k_greedy.json
 gsm8k_test.jsonl

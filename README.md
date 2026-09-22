@@ -11,15 +11,20 @@ the launcher and the benchmark scripts. The weights are on Hugging Face (see *Ge
 
 | | single stream | 3 concurrent streams |
 |---|---|---|
-| prose | 28.8 tok/s | |
-| code | 38.2 tok/s | |
+| prose | 32.2 tok/s | |
+| code | 36.7 tok/s | |
 | math | 38.8 tok/s | |
-| aggregate | | **51.8 tok/s** |
+| aggregate | | **57.7 tok/s** |
 | GSM8K (greedy, 200 problems) | 188 / 200 | |
 | long context | needle passes at 254k tokens; decode 14 tok/s after a 154k-token prompt | |
 | resident weights | ~87 GB | |
 
 Repeat runs on this class of machine differ by up to ±5 % in speed and ±3 GSM8K problems per 100.
+
+Aggregate is 1200 completion tokens divided by the longest of the three stream wall times — not the sum of the
+per-stream decode rates, which overstates delivered throughput (60.9 vs 57.7 tok/s on this run). The raw probe output
+is checked in as `speed_published.json` (this build) and `speed_nospec.json` (same build, speculation off); the chart
+is regenerated from them with `python3 docs/make_benchmarks.py`.
 
 ## Requirements
 * DGX Spark (GB10, 128 GB unified). Nothing else was tested.
