@@ -1,0 +1,6 @@
+.view/
+__pycache__/
+*.pyc
+speed_*.json
+gsm8k_greedy.json
+gsm8k_test.jsonl
